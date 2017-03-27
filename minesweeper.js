@@ -28,13 +28,13 @@ var board = {
       hidden: false},
     {
       row: 1,
-      col: 1, i
-      sMine: true,
+      col: 1,
+      isMine: true,
       hidden: false},
     {
       row: 1,
-      col: 2, i
-      sMine: true,
+      col: 2,
+      isMine: true,
       hidden: false},
     {
       row: 2,
@@ -46,7 +46,8 @@ var board = {
       row: 2,
       col: 1,
       isMine: true,
-      hidden: false},
+      hidden: false
+    },
     {
       row: 2,
       col: 2,
@@ -56,6 +57,9 @@ var board = {
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
+  for(var i = 0; i < board.cells.length; i++) {
+    board.cells[i]["surroundingMines"] = countSurroundingMines(board.cells[i]);
+  }
   lib.initBoard()
 }
 
