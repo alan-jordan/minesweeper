@@ -13,8 +13,8 @@ function randomNumber() {
 function newBoard() {
   var board = {};
   board['cells'] = [];
-  for (var i = 0; i < 3; i++) {
-    for (var j = 0; j < 3; j++) {
+  for (var i = 0; i < 4; i++) {
+    for (var j = 0; j < 4; j++) {
       board.cells.push({row: i, col: j, isMine: randomNumber(), hidden: true});
     }
   }
@@ -30,6 +30,7 @@ function resetGame() {
 
 function startGame () {
   board = newBoard();
+
   lib.initBoard();
   document.addEventListener("click", checkForWin);
   document.addEventListener("contextmenu", checkForWin);
@@ -62,6 +63,8 @@ function checkForWin () {
       }
     }
     // We win! So display message
+    var audio = document.getElementsByTagName("audio")[0];
+    audio.play();
     lib.displayMessage('You win!');
 
   // You can use this function call to declare a winner (once you've
