@@ -34,11 +34,13 @@ function checkForWin () {
 
     for(var i = 0; i < board.cells.length; i++) {
       if(board.cells[i].isMine === true && board.cells[i].isMarked === true) {
-        // We have a marked mine, so continue on with loop
+        // We have a marked mine
       } else if (board.cells[i].hidden !== true) {
-        // We have an unhidden cell so continue on with loop
+        // Cell is hidden
       } else {
         // We either have an unmarked mine or a hidden cell, so return out.
+        // This will force the checkForWin function to end and will not trigger
+        // the win condition outside of the for loop.
         return;
       }
     }
