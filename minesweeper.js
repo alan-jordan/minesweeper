@@ -9,15 +9,28 @@ function randomNumber() {
   return Math.round(Math.random());
 }
 
+// Function to lay mines
+// Lays one mine randomly
+// Needs some work
+function layMines(board) {
+  randNumber = Math.floor(Math.random() * 16) + 1;
+  for(var i = 0; i < board.cells.length; i++ ) {
+    board.cells[randNumber].isMine = true;
+  }
+  return board;
+}
+
+
 // Generates a random board
 function newBoard() {
   var board = {};
   board['cells'] = [];
   for (var i = 0; i < 4; i++) {
     for (var j = 0; j < 4; j++) {
-      board.cells.push({row: i, col: j, isMine: randomNumber(), hidden: true});
+      board.cells.push({row: i, col: j, isMine: false, hidden: true});
     }
   }
+  layMines(board);
   return board;
 }
 
@@ -27,6 +40,17 @@ function resetGame() {
   boardHtml[0].innerHTML = " ";
   startGame();
 }
+
+// Checks for the BOOM!
+function checkBoom() {
+  var mainDiv = document.getElementById("message");
+  var messageTag = mainDiv.getElementsByTagName("p");
+  if (messageTag[0] === "<p>BOOM!</p>") {
+    var audio = document.getElementsByTagName("audio")[2];
+    audio.play();
+  }
+}
+
 
 function startGame () {
   board = newBoard();
@@ -62,6 +86,7 @@ function checkForWin () {
         return;
       }
     }
+
     // We win! So display message
     var audio = document.getElementsByTagName("audio")[0];
     audio.play();
