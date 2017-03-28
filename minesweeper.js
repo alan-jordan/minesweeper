@@ -21,11 +21,21 @@ function newBoard() {
   return board;
 }
 
+// Resets game
+function resetGame() {
+  boardHtml = document.getElementsByClassName('board');
+  boardHtml[0].innerHTML = " ";
+  startGame();
+}
+
 function startGame () {
   board = newBoard();
   lib.initBoard();
   document.addEventListener("click", checkForWin);
   document.addEventListener("contextmenu", checkForWin);
+  // Event listener to check for rest game button being clicked
+  var e = document.getElementById("resetGame");
+  e.addEventListener("click", resetGame, false);
 
   for(var i = 0; i < board.cells.length; i++) {
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
