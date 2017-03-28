@@ -1,28 +1,53 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-var board = {
-  cells: [
-    { row: 0, col: 0, isMine: false, hidden: true },
-    { row: 0, col: 1, isMine: false, hidden: true },
-    { row: 0, col: 2, isMine: false, hidden: true },
-    { row: 1, col: 0, isMine: false, hidden: true },
-    { row: 1, col: 1, isMine: true, hidden: true },
-    { row: 1, col: 2, isMine: false, hidden: true },
-    { row: 2, col: 0, isMine: false, hidden: true },
-    { row: 2, col: 1, isMine: false, hidden: true },
-    { row: 2, col: 2, isMine: true, hidden: true }
-  ]
-};
+
+// Stretch Goal 1 - Automatic board generation
+
+// Function generates a random number between 0 and 1
+function randomNumber() {
+  return Math.round(Math.random());
+}
+
+// Generates a random board
+function newBoard() {
+  var board = {};
+  board['cells'] = [];
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      board.cells.push({row: i, col: j, isMine: randomNumber(), hidden: true});
+    }
+  }
+  return board;
+}
+
+
+
+// var board = {
+//   cells: [
+//     { row: 0, col: 0, isMine: randomNumber(), hidden: true },
+//     { row: 0, col: 1, isMine: randomNumber(), hidden: true },
+//     { row: 0, col: 2, isMine: randomNumber(), hidden: true },
+//     { row: 1, col: 0, isMine: randomNumber(), hidden: true },
+//     { row: 1, col: 1, isMine: randomNumber(), hidden: true },
+//     { row: 1, col: 2, isMine: randomNumber(), hidden: true },
+//     { row: 2, col: 0, isMine: randomNumber(), hidden: true },
+//     { row: 2, col: 1, isMine: randomNumber(), hidden: true },
+//     { row: 2, col: 2, isMine: randomNumber(), hidden: true }
+//   ]
+// };
+
+//console.log(board);
 
 function startGame () {
-  for(var i = 0; i < board.cells.length; i++) {
-    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
-  }
-  // Don't remove this function call: it makes the game work!
+  board = newBoard();
   lib.initBoard();
   document.addEventListener("click", checkForWin);
   document.addEventListener("contextmenu", checkForWin);
+
+  for(var i = 0; i < board.cells.length; i++) {
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
+  }
 }
 
 // Define this function to look for a win condition:
