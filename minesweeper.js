@@ -28,6 +28,7 @@ function startGame () {
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 document.getElementById("myBtn").addEventListener("click", checkForWin);
+document.getElementById("myBtn").addEventListener("contextmenu", checkForWin);
 
 function checkForWin () {
 
