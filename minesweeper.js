@@ -45,10 +45,6 @@ function resetGame() {
 function checkBoom() {
   var mainDiv = document.getElementById("message");
   var messageTag = mainDiv.getElementsByTagName("p");
-  if (messageTag[0] === "<p>BOOM!</p>") {
-    var audio = document.getElementsByTagName("audio")[2];
-    audio.play();
-  }
 }
 
 
@@ -58,7 +54,7 @@ function startGame () {
   lib.initBoard();
   document.addEventListener("click", checkForWin);
   document.addEventListener("contextmenu", checkForWin);
-  // Event listener to check for rest game button being clicked
+  // Event listener to check for reset game button being clicked
   var e = document.getElementById("resetGame");
   e.addEventListener("click", resetGame, false);
 
@@ -80,6 +76,7 @@ function checkForWin () {
       } else if (board.cells[i].hidden !== true) {
         // Cell is hidden
       } else {
+        checkBoom();
         // We either have an unmarked mine or a hidden cell, so return out.
         // This will force the checkForWin function to end and will not trigger
         // the win condition outside of the for loop.
