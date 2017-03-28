@@ -21,24 +21,6 @@ function newBoard() {
   return board;
 }
 
-
-
-// var board = {
-//   cells: [
-//     { row: 0, col: 0, isMine: randomNumber(), hidden: true },
-//     { row: 0, col: 1, isMine: randomNumber(), hidden: true },
-//     { row: 0, col: 2, isMine: randomNumber(), hidden: true },
-//     { row: 1, col: 0, isMine: randomNumber(), hidden: true },
-//     { row: 1, col: 1, isMine: randomNumber(), hidden: true },
-//     { row: 1, col: 2, isMine: randomNumber(), hidden: true },
-//     { row: 2, col: 0, isMine: randomNumber(), hidden: true },
-//     { row: 2, col: 1, isMine: randomNumber(), hidden: true },
-//     { row: 2, col: 2, isMine: randomNumber(), hidden: true }
-//   ]
-// };
-
-//console.log(board);
-
 function startGame () {
   board = newBoard();
   lib.initBoard();
