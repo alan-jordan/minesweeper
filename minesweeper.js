@@ -27,6 +27,8 @@ function startGame () {
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
+document.getElementById("myBtn").addEventListener("click", checkForWin);
+
 function checkForWin () {
 
   // You can use this function call to declare a winner (once you've
