@@ -41,14 +41,15 @@ function resetGame() {
   startGame();
 }
 
-// Checks for the BOOM!
+// Checks for a mine class.
+// If so, sets audio as the explosion sound
+// If not, just sets click
+//Then plays
 function checkSoundToPlay() {
   if ((event.target).classList.contains('mine')) {
     var audio = document.getElementsByTagName("audio")[2];
-    console.log(audio);
   } else {
     var audio = document.getElementsByTagName("audio")[1];
-    console.log(audio);
   }
   audio.play();
 }
@@ -82,10 +83,12 @@ function checkForWin () {
       } else if (board.cells[i].hidden !== true && board.cells[i].isMine !== true) {
         // Cell is hidden
       } else {
+        // Calls function to check which sound effect to play.
+        checkSoundToPlay();
+
         // We either have an unmarked mine or a hidden cell, so return out.
         // This will force the checkForWin function to end and will not trigger
         // the win condition outside of the for loop.
-        checkSoundToPlay();
         return;
       }
     }
