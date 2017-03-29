@@ -38,7 +38,7 @@ function newBoard() {
 function resetGame() {
   boardHtml = document.getElementsByClassName('board');
   boardHtml[0].innerHTML = " ";
-  startGame();
+  //startGame();
 }
 
 // Checks for a mine class.
