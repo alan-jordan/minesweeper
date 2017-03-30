@@ -96,7 +96,7 @@ function checkForWin () {
     // We win! So display message
     var audio = document.getElementsByTagName("audio")[0];
     audio.play();
-    lib.displayMessage('You win!');
+    lib.displayMessage('Level complete');
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
