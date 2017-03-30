@@ -9,7 +9,8 @@ body {
   justify-content: flex-center;
   flex-direction: column;
   background-image: url("images/backdrop.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
+  background-color: #6B88FE;
   font-family: 'Press Start 2P', cursive;
 }
 
