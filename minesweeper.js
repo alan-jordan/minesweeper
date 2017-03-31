@@ -13,7 +13,7 @@ function randomNumber() {
 // Lays one mine randomly
 // Needs some work
 function layMines(board) {
-  randNumber = Math.floor(Math.random() * 16) + 1;
+  var randNumber = Math.floor(Math.random() * 16) + 1;
   for(var i = 0; i < board.cells.length; i++ ) {
     board.cells[randNumber].isMine = true;
   }
@@ -47,7 +47,21 @@ function resetGame() {
 //Then plays
 function checkSoundToPlay() {
   if ((event.target).classList.contains('mine')) {
-    var audio = document.getElementsByTagName("audio")[2];
+    // Fix to stop wrong audio firing in particular edge case
+    // Loops through to check for processed cells.
+    // If that number is 14, then the coin sound will fire,
+    // not the game over sound.
+    var numProcessed = 0;
+    for(var i = 0; i < board.cells.length; i++) {
+      if(board.cells[i].isProcessed === true) {
+        numProcessed++;
+      }
+    }
+    if(numProcessed === 14) {
+      var audio = document.getElementsByTagName("audio")[1];
+    } else {
+      var audio = document.getElementsByTagName("audio")[2];
+    }
   } else {
     var audio = document.getElementsByTagName("audio")[1];
   }
