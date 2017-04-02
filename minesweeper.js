@@ -57,8 +57,9 @@ function checkSoundToPlay() {
         numProcessed++;
       }
     }
-    if(numProcessed === 14) {
-      var audio = document.getElementsByTagName("audio")[1];
+
+    if(numProcessed === 14 && event.target.classList.contains('mine')) {
+      var audio = document.getElementsByTagName("audio")[2];
     } else {
       var audio = document.getElementsByTagName("audio")[2];
     }
